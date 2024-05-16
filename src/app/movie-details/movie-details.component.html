@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-3">
+
+        <img *ngIf="itemDetails.poster_path" [src]="imgprefix+itemDetails.poster_path" class="w-100  " alt="">
+        <img *ngIf="itemDetails.profile_path"  [src]="imgprefix+itemDetails.profile_path" class="w-100  " alt="">
+
+    </div>
+
+    <div class="col-md-9 d-flex align-items-center">
+        <div>
+            <h2 class="h4 my-2" >{{itemDetails.title}} {{itemDetails.name}}</h2>
+            <h2 class="h4 my-2" >{{itemDetails.known_for_department}}</h2>
+
+        <p class=" my-2 lead textcolor" style="font-size: small;">{{itemDetails.overview}} {{itemDetails.biography}}</p>
+        <p class=" my-2 lead textcolor" style="font-size: small;">{{itemDetails.overview}} {{itemDetails.place_of_birth
+        }}</p>
+
+
+      
+
+
+        <h6 class="lead textcolor">{{itemDetails.vote_count}}</h6>
+        <h6 class="lead textcolor">{{itemDetails.vote_average}}</h6>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div *ngIf="similarMovie" class=" mt-5"><h2>Similar Movies</h2></div>
+    <div *ngFor="let item of similarMovie" class="col-md-2 py-5">
+        <div (click)="getSimilar(mediaT,item.id)" class="Movie point position-relative" id="movie" >
+            <!-- routing parameters -->
+            <!-- <a  [routerLink]="['/movieDetails',item.id,mediaT]">  -->
+                <img *ngIf="item.poster_path" [src]="imgprefix+item.poster_path" class="w-100 imgg " alt="">
+                <img *ngIf="item.profile_path"  [src]="imgprefix+item.profile_path" class="w-100 imgg " alt="">
+    
+            <h3   class="h6 my-2" style="font-size: medium;">{{item.title | lowercase}} {{item.name}}</h3>
+    
+            <div *ngIf="item.vote_average" class="Vote position-absolute top-0 p-1 end-0 text-white">{{item.vote_average.toFixed(1)}}</div>
+            <!-- </a> -->
+               
+        </div>
+
+    </div>
+</div>
