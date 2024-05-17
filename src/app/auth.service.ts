@@ -32,14 +32,17 @@ export class AuthService {
 
   signOut(){
     localStorage.removeItem('userToken');
+    localStorage.removeItem('data');
     this.userData.next(null);
     this._router.navigate(['/login']);
   
   }
   signUp(userData:object):Observable<any>{
-    return this._httpClient.post('https://route-egypt-api.herokuapp.com/signup/',userData);
+    return this._httpClient.post('https://e-commerce-aibk.onrender.com/api/v1/users/register',userData);
   }
   signin(userData:object):Observable<any>{
-    return this._httpClient.post('https://route-egypt-api.herokuapp.com/signin/',userData);
+    return this._httpClient.post(`https://e-commerce-aibk.onrender.com/api/v1/users/login`,userData);
   }
+
+  
 }

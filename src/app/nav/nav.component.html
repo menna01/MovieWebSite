@@ -13,9 +13,9 @@
           <!-- <a *ngIf="islogin" class="nav-link" routerLink="home"  >Home</a> -->
           <a  class="nav-link" routerLink="home"  >Home</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="about"  >About</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" routerLink="movies"  >Movies</a>
         </li>
@@ -41,17 +41,17 @@
         </li>
        
         <li class="nav-item">
-          <a *ngIf="!islogin" class="nav-link" routerLink="login"  >Login</a>
+          <a *ngIf="islogin" class="nav-link" routerLink="login"  >Login</a>
           <!-- <a *ngIf="!islogin" class="nav-link" routerLink="login"  >Login</a> -->
 
         </li>
         <li class="nav-item">
           <!-- <a *ngIf="!islogin" class="nav-link" routerLink="register"  >Register</a> -->
-          <a *ngIf="!islogin" class="nav-link" routerLink="register"  >Register</a>
+          <a *ngIf="isregisterd" class="nav-link" routerLink="register"  >Register</a>
 
         </li>
         <li class="nav-item">
-          <a *ngIf="islogin"  (click)="signOut()" class="nav-link"  >Log Out</a>
+          <a *ngIf="logout"  (click)="signOut()" class="nav-link"  >Log Out</a>
         </li>
 
       

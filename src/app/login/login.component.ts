@@ -3,6 +3,7 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { tick } from '@angular/core/testing';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,17 @@ export class LoginComponent {
 
   }
 
+  error:string='';
+  isloadind:boolean=false;
+  
+  isloged:boolean=false;
+  
+  loginForm2:FormGroup= new FormGroup({
+    email:new FormControl(null),
+    password:new FormControl(null)
+  
+  })
+  
   ngOnInit(): void {
     // this._authService.userData.subscribe({
     //   next:()=>{
@@ -30,7 +42,7 @@ export class LoginComponent {
 loginForm:FormGroup= new FormGroup({
  
   email:new FormControl(null,[Validators.required,Validators.email]),
-  password:new FormControl(null,[Validators.required,Validators.pattern(/^[A-Z]/)])
+  password:new FormControl(null,[Validators.required,Validators.pattern(/^[A-Za-z]/)])
 
 })
 
@@ -46,22 +58,32 @@ submitLoginForm(loginForm:FormGroup){
   this._authService.signin(loginForm.value).subscribe({
     next:(response)=>{ //هنا بترجع الريسبونس نفسها
       console.log(response);
-      this.isloadind=false;
-      if(response.message==="success"){ //مسدج ديه جوا الاوبجكت نفسه
-      
+      // this.isloadind=false;
+      if(response.status==="success"){ //مسدج ديه جوا الاوبجكت نفسه
+      console.log(response)
 
-      localStorage.setItem('userToken',response.token);
-      this._authService.saveUserData();
-      this._router.navigate(['/home'])
+
+      localStorage.setItem('data','success');
+      this._authService.saveUserData();        
+
+      this._router.navigate(['/home']);
       }
       else{
         this.error=response.message;
+       
 
       }
       
     },
-    error:(r)=>{console.log(r);
-    
+    error:(r)=>{
+      this.isloadind=false;
+
+      Swal.fire({
+        text:r.error.message,
+        confirmButtonText:"okay",
+       
+   
+      })
     }
 
   });
@@ -74,18 +96,6 @@ submitLoginForm(loginForm:FormGroup){
 
 
 
-
-error:String='';
-isloadind:boolean=false;
-
-loginForm2:FormGroup= new FormGroup({
-  first_name:new FormControl(null),
-  last_name:new FormControl(null),
-  age:new FormControl(null),
-  email:new FormControl(null),
-  password:new FormControl(null)
-
-})
 
   
 

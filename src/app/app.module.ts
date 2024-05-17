@@ -12,13 +12,13 @@ import { MoviesComponent } from './movies/movies.component';
 import { TvComponent } from './tv/tv.component';
 import { PeopleComponent } from './people/people.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MediaitemsComponent } from './mediaitems/mediaitems.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { SearchPipe } from './search.pipe';
 import { HttpInterceptorFn } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -33,10 +33,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     TvComponent,
     PeopleComponent,
     NotfoundComponent,
-    FooterComponent,
     MediaitemsComponent,
     MovieDetailsComponent,
-    SearchPipe
+    SearchPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

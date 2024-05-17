@@ -1,4 +1,4 @@
-<div class="w-75 mx-auto py-3">
+<div class="w-75 mx-auto py-5">
     <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 <form (ngSubmit)="submitLoginForm(loginForm)" [formGroup]="loginForm">
     
@@ -26,7 +26,8 @@
       </div>
 
     <button  [disabled]="loginForm.invalid" type="submit" class="btn btn-info" >
-        <span *ngIf="!isloadind">Register</span>
+        <!-- <span *ngIf="!isloadind">login</span> -->
+        <span>login</span>
 
         <i *ngIf="isloadind" class="fas fa-spinner fa-spin"></i>
 
@@ -35,4 +36,6 @@
    
 </form>
 </div>
+
+<div class="py-5"></div>
 
