@@ -39,6 +39,7 @@
             <!-- <a  [routerLink]="['/movieDetails',item.id,mediaT]">  -->
                 <img *ngIf="item.poster_path" [src]="imgprefix+item.poster_path" class="w-100 imgg " alt="">
                 <img *ngIf="item.profile_path"  [src]="imgprefix+item.profile_path" class="w-100 imgg " alt="">
+                <button class="btn btn-dark rounded-5 m-1">+</button>
     
             <h3   class="h6 my-2" style="font-size: medium;">{{item.title | lowercase}} {{item.name}}</h3>
     

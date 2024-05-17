@@ -12,6 +12,7 @@ import { notDeepEqual } from 'assert';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { authGuard } from './auth.guard';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
 
 const routes: Routes = [
   // {path:"root",component:AppComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:"register",component:RegisterComponent},
   {path:"tv",component:TvComponent},
   {path:"people",component:PeopleComponent},
+  {path:"watchlist",component:WatchlistComponent},
   {path:"movieDetails/:media_type/:id",component:MovieDetailsComponent},//take 2 parameters
 
   {path:"movies",component:MoviesComponent},

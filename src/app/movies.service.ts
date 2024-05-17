@@ -48,4 +48,20 @@ export class MoviesService {
     return this._httpClient.get(`https://api.themoviedb.org/3/${id}/${media_type}/similar?api_key=95ce63358444b9d594af368525e28aba
     `);
   }
+
+  private movies: any[] = [];
+
+  addwatchlist(movie: any): void {
+    this.movies.push(movie);
+  }
+
+  getWatchlist(): any[] {
+    return this.movies;
+  }
+  removeMovie(movie: any): void {
+    const index = this.movies.indexOf(movie);
+    if (index > -1) {
+      this.movies.splice(index, 1);
+    }
+  }
 }

@@ -23,6 +23,9 @@
           <a class="nav-link" routerLink="tv"  >TV</a>
         </li>
         <li class="nav-item">
+          <a  *ngIf="isLoggedIn"  class="nav-link" routerLink="watchlist"  >WatchList</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" routerLink="people"  >People</a>
         </li>
         <!-- <li class="nav-item">

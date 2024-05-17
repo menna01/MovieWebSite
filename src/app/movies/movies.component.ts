@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { MoviesService } from '../movies.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { MoviesService } from '../movies.service';
 export class MoviesComponent implements OnInit{
   trendingMovies:any[]=[]
   term:string=``;
+
   /**
    *
    */

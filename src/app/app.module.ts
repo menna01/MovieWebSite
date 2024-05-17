@@ -19,6 +19,7 @@ import { SearchPipe } from './search.pipe';
 import { HttpInterceptorFn } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FooterComponent } from './footer/footer.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
 
 
 
@@ -36,7 +37,8 @@ import { FooterComponent } from './footer/footer.component';
     MediaitemsComponent,
     MovieDetailsComponent,
     SearchPipe,
-    FooterComponent
+    FooterComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
