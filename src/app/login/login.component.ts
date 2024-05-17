@@ -28,6 +28,7 @@ export class LoginComponent {
   })
   
   ngOnInit(): void {
+
     // this._authService.userData.subscribe({
     //   next:()=>{
 
@@ -57,16 +58,22 @@ submitLoginForm(loginForm:FormGroup){
 
   this._authService.signin(loginForm.value).subscribe({
     next:(response)=>{ //هنا بترجع الريسبونس نفسها
-      console.log(response);
+      // console.log(response);
       // this.isloadind=false;
-      if(response.status==="success"){ //مسدج ديه جوا الاوبجكت نفسه
-      console.log(response)
+      if(response.status==="success"){
+        this._authService.setLoginStatus(true);
+        // location.reload();
+        this._router.navigate(['/home']); //مسدج ديه جوا الاوبجكت نفسه
+      // console.log(response)
+
+      var tok=localStorage.getItem('userToken')
+      // console.log(tok)
 
 
       localStorage.setItem('data','success');
-      this._authService.saveUserData();        
+      // this._authService.saveUserData();        
 
-      this._router.navigate(['/home']);
+     
       }
       else{
         this.error=response.message;

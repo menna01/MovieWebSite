@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, input } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { log } from 'console';
 
@@ -9,26 +9,45 @@ import { log } from 'console';
 })
 export class NavComponent  implements OnInit{
 
-islogin:boolean=true;
-logout:boolean=false;
-isregisterd:boolean=true;
+// islogin:boolean=true;
+// logout:boolean=false;
+// isregisterd:boolean=true;
 
+isLoggedIn = false;
+isRigestred = false;
 
 constructor(private _authService:AuthService){
+  
 
 }
+
   ngOnInit(): void {
-    var token=localStorage.getItem("userToken");
+    this._authService.isLoggedIn().subscribe(loggedIn => {
+      this.isLoggedIn = loggedIn;
+      this.isRigestred=true;
+
+      console.log(this.isLoggedIn)
+    });
+    this._authService.isRigestred().subscribe(registred => {
+      this.isRigestred = registred;
+      
+      console.log(this.isRigestred)
+    });
+    var token=localStorage.getItem('userToken');
+
+
+
+    console.log("the tokeeeeeen is ",token);
     var data=localStorage.getItem('data');
 
-    if(token){
-      this.isregisterd=false
-      console.log(token)
-    }
-    if(data){
-      this.logout=true;
-      this.islogin=false;
-    }
+    // if(token){
+    //   this.isregisterd=false
+    //   console.log(token)
+    // }
+    // if(data){
+    //   this.logout=true;
+    //   this.islogin=false;
+    // }
   
     
    
@@ -57,7 +76,10 @@ constructor(private _authService:AuthService){
 
   signOut(){
     this._authService.signOut();
-    this.logout=false;
+    this.isLoggedIn=false;
+    this.isRigestred=false;
+    // this.logout=false;
+    // location.reload();
   }
 
 }

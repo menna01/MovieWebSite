@@ -10,6 +10,8 @@ import { MoviesService } from '../movies.service';
 export class MovieDetailsComponent implements OnInit {
    itemDetails:any;
    similarMovie:any;
+   tv:boolean=false;
+   sim:boolean=true;
    mediaT:string='';
    imgprefix:string='https://image.tmdb.org/t/p/w500';
   constructor(private _activatedRoute:ActivatedRoute , private _moviceService:MoviesService){    
@@ -35,6 +37,10 @@ export class MovieDetailsComponent implements OnInit {
     this._moviceService.getSimilar(id,media_type).subscribe({
       
       next:(res)=>{
+        if(id=='tv'){
+          this.tv=true;
+          this.sim=false;
+        }
         console.log(this.mediaT)
    
         this.similarMovie=res.results

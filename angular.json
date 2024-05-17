@@ -26,6 +26,9 @@
             "outputPath": "dist/app1",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "ssr": {
+              "entry": "server.ts"
+            },
             "polyfills": [
               "zone.js"
             ],

@@ -41,19 +41,23 @@ submitRegisterForm(registerForm:FormGroup){
   // console.log(registerForm.get("first_name")?.errors);
 
   this.isloadind=true;
-  console.log(registerForm.value)
+  // console.log(registerForm.value)
 
   this._authService.signUp(registerForm.value).subscribe({
     next:(response)=>{
        //هنا بترجع الريسبونس نفسها
-      console.log(response);
+      // console.log(response);
       this.isloadind=false;
       if(response.status==="success"){
+        this._authService.setRegisterStatus(true);
+
         localStorage.setItem('userToken',response.token);
-        this._authService.saveUserData();        
+        // this._authService.saveUserData();  
+        this._router.navigate(['/login']); 
+        // location.reload();     
         
         //مسدج ديه جوا الاوبجكت نفسه
-      this._router.navigate(['/login']); //navigate take array
+       //navigate take array
       }
       else{
        

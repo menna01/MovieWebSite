@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor( private _moviesServie:MoviesService){
+  
 
    
 
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
 
 ngOnInit(): void {
   
+
 
   this._moviesServie.getMovies("movie").subscribe({
 
